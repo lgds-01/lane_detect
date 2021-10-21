@@ -116,7 +116,7 @@ qwq,这个自食其力吧
 
    <img src="/Users/lgds/Library/Application Support/typora-user-images/image-20211021093700919.png" alt="image-20211021093700919" style="zoom:25%;" /><img src="/Users/lgds/Library/Application Support/typora-user-images/image-20211021093716499.png" alt="image-20211021093716499" style="zoom:25%;" />
 
-4. 项目鲁棒性不够，当画面中车道时会中断退出
+4. 项目鲁棒性不够，当画面中没有车道时会中断退出
 
 5. 车道只有黄色和白色，因此可以分离出黄色和白色，从而可以减少误差
 

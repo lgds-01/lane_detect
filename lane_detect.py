@@ -2,8 +2,25 @@ import cv2
 import numpy as np
 
 def process(frame):
+    cv2.imshow("w",frame)
+
+    # 提取白色空间
+    white_lower = np.array([200,200,200])
+    white_higher = np.array([255,255,255])
+    white_mask = cv2.inRange(frame,white_lower,white_higher)
+    white_space = cv2.bitwise_and(frame,frame,mask=white_mask)
+
+    # 提取黄色空间
+    yellow_lower = np.array([20,80,100])
+    yellow_higher = np.array([40,255,255])
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    yellow_mask = cv2.inRange(hsv,yellow_lower,yellow_higher)
+    yellow_space = cv2.bitwise_and(frame,frame,mask=yellow_mask)
+
+    total_space = cv2.addWeighted(white_space, 1., yellow_space, 1., 0.)
+
     # 灰度化
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(total_space, cv2.COLOR_BGR2GRAY)
     # 高斯模糊
     blur = cv2.GaussianBlur(gray, (5, 5), 0)
     # 边缘检测
@@ -17,6 +34,10 @@ def process(frame):
 
     # 霍夫直线检测
     lines = cv2.HoughLinesP(img, 1, np.pi / 180, 50, minLineLength=30, maxLineGap=20)
+
+    # 画面中没有车道
+    if lines is None:
+        return frame
 
     # 车道计算
     left_lines = []
@@ -70,7 +91,7 @@ def least_squares_fit(lines, ymin, ymax):
 
 
 if __name__ == '__main__':
-    video = cv2.VideoCapture(0)
+    video = cv2.VideoCapture("cv2_yellow_lane.mp4")
 
     while True:
         ret, frame = video.read()
