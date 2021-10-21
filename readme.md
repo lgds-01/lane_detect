@@ -100,7 +100,7 @@ cv2.line(frame,left[0],left[1],(0,255,0),3)
 cv2.line(frame,right[0],right[1],(0,255,0),3)
 ```
 
-<img src="/Users/lgds/Library/Application Support/typora-user-images/image-20211021012753542.png" alt="image-20211021012753542" style="zoom:25%;" />
+<img src="https://cdn.jsdelivr.net/gh/lgds-01/picture@main/uPic/image-20211021012753542.png" alt="image-20211021012753542" style="zoom:25%;" />
 
 ### 步骤9.对视频的每一帧应用上述步骤
 
@@ -114,9 +114,8 @@ qwq,这个自食其力吧
 
 3. 车道线缺失大部分时，检测不出该边车道
 
-   <img src="/Users/lgds/Library/Application Support/typora-user-images/image-20211021093700919.png" alt="image-20211021093700919" style="zoom:25%;" /><img src="/Users/lgds/Library/Application Support/typora-user-images/image-20211021093716499.png" alt="image-20211021093716499" style="zoom:25%;" />
+   <img src="https://cdn.jsdelivr.net/gh/lgds-01/picture@main/uPic/image-20211021093700919.png" alt="image-20211021093700919" style="zoom:25%;" /><img src="/Users/lgds/Library/Application Support/typora-user-images/image-20211021093716499.png" alt="image-20211021093716499" style="zoom:25%;" />
 
 4. 项目鲁棒性不够，当画面中没有车道时会中断退出
 
 5. 车道只有黄色和白色，因此可以分离出黄色和白色，从而可以减少误差
-
